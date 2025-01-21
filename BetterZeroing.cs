@@ -15,7 +15,6 @@
         {
             var harmony = new Harmony(GUID);
             harmony.PatchAll();
-            //Print("Loaded BetterZeroing by ehaugw");
         }
 
         [HarmonyPatch(typeof(Weapon), "CreateOpticCalibrationData")]
@@ -24,9 +23,13 @@
             [HarmonyPrefix]
             public static void Prefix(Weapon __instance, ref AmmoTemplate ammoTemplate)
             {
-                if (__instance?.Chambers is Slot[] slots && slots.Length > 0 && slots[0]?.ContainedItem is AmmoItemClass ammoClass && ammoClass.AmmoTemplate is AmmoTemplate ammo)
+                if (__instance?.GetCurrentMagazine() is MagazineItemClass mag && mag.FirstRealAmmo() is AmmoItemClass ammoClass1 && ammoClass1.AmmoTemplate is AmmoTemplate ammo1)
                 {
-                    ammoTemplate = ammo;
+                    ammoTemplate = ammo1;
+                }
+                else if (__instance?.Chambers is Slot[] slots && slots.Length > 0 && slots[0]?.ContainedItem is AmmoItemClass ammoClass2 && ammoClass2.AmmoTemplate is AmmoTemplate ammo2)
+                {
+                    ammoTemplate = ammo2;
                 }
             }
             //[HarmonyPostfix]
