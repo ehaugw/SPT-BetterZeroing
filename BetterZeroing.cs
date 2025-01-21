@@ -1,15 +1,8 @@
 ﻿namespace BetterZeroing
 {
-    using System.Collections.Generic;
-    using UnityEngine;
     using BepInEx;
     using HarmonyLib;
-    using System;
-    using System.Diagnostics;
     using EFT.InventoryLogic;
-    using CommonAssets.Scripts.ArtilleryShelling.Client.Audio;
-    using System.Linq;
-    using EFT.UI;
 
     [BepInPlugin(GUID, NAME, VERSION)]
     public class BetterZeroing : BaseUnityPlugin
