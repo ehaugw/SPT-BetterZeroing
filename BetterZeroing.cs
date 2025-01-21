@@ -32,47 +32,9 @@
             //[HarmonyPostfix]
             //public static void Postfix(Weapon __instance, AmmoTemplate ammoTemplate, Vector3[] __result)
             //{
-            //    Print("Using Ammo: " + ammoTemplate?._name ?? "null");
-            //    Print("Vector info: " + String.Join(", ", __result));
+            //    Console.WriteLine("Using Ammo: " + ammoTemplate?._name ?? "null");
+            //    Console.WriteLine("Vector info: " + String.Join(", ", __result));
             //}
         }
-
-        //private static void Print(string message)
-        //{
-        //    //ConsoleScreen.Log(message);
-        //    UnityEngine.Debug.Log(message);
-        //    Console.WriteLine(message);
-        //}
-    }
+   }
 }
-
-//[HarmonyPatch(typeof(Weapon), "CreateOpticCalibrationPoints")]
-//public class Weapon_CreateOpticCalibrationPoints
-//{
-//    [HarmonyPrefix]
-//    public static void Prefix(Weapon __instance, ref AmmoTemplate __state)
-//    {
-//        //Print("Start of patch");
-//        __state = __instance?.Template?.DefAmmoTemplate;
-//        if (__instance?.Chambers is Slot[] slots && slots.Length > 0 && slots[0]?.ContainedItem is AmmoItemClass ammoClass && ammoClass.AmmoTemplate is AmmoTemplate ammo)
-//        {
-//            Print("Swapping Ammo to " + ammo._name);
-//            SetAmmoTemplate(__instance, ammo);
-//            Print("Swap done");
-//        }
-//    }
-
-//    [HarmonyPostfix]
-//    public static void Postfix(Weapon __instance, ref AmmoTemplate __state)
-//    {
-//        if (__state != null && __state != __instance?.Template?.DefAmmoTemplate)
-//        { 
-//            SetAmmoTemplate(__instance, __state);
-//        }
-//    }
-//}
-
-//private static void SetAmmoTemplate(Weapon weapon, AmmoTemplate template)
-//{
-//    At.SetField<WeaponTemplate>(weapon.Template, "_defAmmoTemplate", template);
-//}
